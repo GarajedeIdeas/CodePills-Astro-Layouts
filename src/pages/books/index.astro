@@ -1,0 +1,37 @@
+---
+import Book from "../../components/Book.astro";
+import { books } from "../../data/books";
+import MyLayout from "../../layouts/MyLayout.astro";
+---
+
+<MyLayout title="Libros">
+  <ul>
+    {
+      books.map((book) => (
+        <li>
+          <a href={`books/${book.ISBN}`}>
+            <Book
+              title={book.title}
+              author={book.author.name}
+              cover={book.cover}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>;
+</MyLayout>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 1rem;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

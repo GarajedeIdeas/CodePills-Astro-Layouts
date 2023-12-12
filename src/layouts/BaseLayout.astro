@@ -1,0 +1,30 @@
+---
+import BackButton from "../components/BackButton.astro";
+// 1. La prop frontmatter da acceso al frontmatter y otros datos
+const { frontmatter } = Astro.props;
+---
+
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+  }
+</style>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Agrega otro elemento Encabezado aquí, como estilos y etiquetas meta. -->
+    <title>{frontmatter.title}</title>
+    <BackButton />
+  </head>
+  <body>
+    <!-- Agrega otros componentes de interfaz de usuario aquí, como encabezados y pies de página comunes. -->
+    <h1>{frontmatter.title} por {frontmatter.author}</h1>
+    <!-- 2. El HTML renderizado será pasado al slot por defecto. -->
+    <slot />
+    <p>Escrito en: {frontmatter.date}</p>
+  </body>
+</html>

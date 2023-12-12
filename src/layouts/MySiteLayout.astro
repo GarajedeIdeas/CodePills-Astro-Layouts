@@ -1,0 +1,41 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+const { title } = Astro.props;
+
+interface Props {
+  title?: string;
+}
+---
+
+<style>
+  body {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 1rem;
+    background-color: black;
+    color: white;
+  }
+</style>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <BaseHead />
+  </head>
+  <body>
+    <nav>
+      <a href="/page">Layouts en archivos md</a>
+      <a href="/page-mdx">Layouts en archivos mdx</a>
+      <a href="/books">Rutas</a>
+      <a href="/components">Componentes</a>
+    </nav>
+    {title && <h1>{title}</h1>}
+    <slot />
+    <!-- tu contenido es inyectado aquí -->
+    <Footer />
+  </body>
+</html>

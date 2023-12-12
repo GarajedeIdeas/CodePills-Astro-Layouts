@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from "astro";
+import { books } from "../../data/books.js";
+import MyLayout from "../../layouts/MyLayout.astro";
+
+export const getStaticPaths = (() => {
+  return books.map((book) => {
+    return {
+      params: {
+        isbn: book.ISBN,
+      },
+      props: {
+        book,
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { isbn } = Astro.params;
+const { book } = Astro.props;
+---
+
+<MyLayout title="Detalle del libro">
+  <div>
+    <h1>{book.title}</h1>
+    <p>ISBN: {isbn}</p>
+    <p>Author: {book.author.name}</p>
+    <p>Genre: {book.genre}</p>
+    <p>Pages: {book.pages}</p>
+    <p>Synopsis: {book.synopsis}</p>
+  </div>
+  <img src={book.cover} alt={book.title} />
+</MyLayout>

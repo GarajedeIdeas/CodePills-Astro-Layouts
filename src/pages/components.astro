@@ -1,0 +1,12 @@
+---
+import AstroButton from "../components/AstroButton.astro";
+import { ReactButton } from "../components/ReactButton";
+import MyLayout from "../layouts/MyLayout.astro";
+---
+
+<MyLayout title="Componentes">
+  <h2>Este es un componente button hecho en Astro</h2>
+  <AstroButton />
+  <h2>Este es un componente button hecho en React</h2>
+  <ReactButton client:load />
+</MyLayout>
